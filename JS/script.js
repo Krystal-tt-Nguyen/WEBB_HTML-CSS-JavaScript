@@ -16,3 +16,12 @@ fetch('/HTML/nav.html')
     .catch(error => {
         console.error('Unable to load Navbar: ', error)
 });
+
+fetch('/HTML/footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer').innerHTML = data
+    })
+    .catch(error => {
+        console.error('Unable to load Footer: ', error)
+});
