@@ -1,14 +1,51 @@
+header, nav{
+    background-color: white;
+}
 
-#navbar {
+.bolder{
+    color: #6b705c;
+    font-family: "Inria Serif";
+    font-style: oblique;
+    font-weight: 800;
+}
+
+.lighter {
+    color: #333333;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-style: oblique;
+}
+
+.separator {
+    border: none;
+    border-top: 5px double #3f4238;
+}
+
+#logo-picture{
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+#navbar{
     border-top: 1px solid #b7b7a4;
     border-bottom: 1px solid #b7b7a4;
 }
 
 #navbar-brand{
-    color: #6b705c;
-    font-family: "Inria Serif";
-    font-style: oblique;
-    font-weight: 800;
-    text-align: center;
     margin: 5px 20px;
 }
+
+#about-us-container{
+    padding: 5% 5%;
+}
+
+#about-us-container-right img{
+    max-width: 70%;
+    height: auto;
+    margin-bottom: 15px;
+    opacity: 0.75;
+}
+
+
+
