@@ -26,7 +26,6 @@
 #logo-picture{
     max-width: 100%;
     height: auto;
-    margin: 10px 0;
 }
 
 #navbar{
@@ -34,18 +33,49 @@
     border-bottom: 1px solid #b7b7a4;
 }
 
-#navbar-brand{
-    margin: 5px 20px;
+#homepage-hero{
+    background-image: url(/Images/cta-banner-picture.jpg);
+    background-position: center;
+    background-repeat: repeat-x;
+    background-size: contain;
 }
 
-#about-us-container{
-    padding: 5%;
+#cta{
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    text-align: center;
 }
+
+#cta-content {
+    justify-content: center; 
+    gap: 15px;
+}
+
+#cta-content p{
+    color: whitesmoke; 
+    font-family: 'Arial', sans-serif;
+    font-style: oblique;
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: 1px 1px #483C32;
+}
+
+.cta-button{
+    border: 3px solid #a5a58d;
+    border-radius: 50px;
+    background-color: white;
+    color: #483C32;
+    font-weight: 400;
+    padding: 8px 25px;
+    text-decoration: none;
+}
+
+#about-us-container{padding: 5%;}
 
 #about-us-container-right img{
     max-width: 70%;
     height: auto;
-    margin-bottom: 15px;
     opacity: 0.8;
 }
 
@@ -57,13 +87,9 @@
     padding: 5px 3px;
 } 
 
-#footer-container{
-    background-color: #483C32 ;
-}
+#footer-container{background-color: #483C32;}
 
-#footer-container i{
-    padding: 0 3px;;
-}
+#footer-container i{padding: 0 3px;}
 
 #copyright{
     display: flex;
@@ -71,11 +97,3 @@
     justify-content: flex-end;
     font-size: 10px;
 }
-
-/* 
-#payment{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 0 5px;
-} */
