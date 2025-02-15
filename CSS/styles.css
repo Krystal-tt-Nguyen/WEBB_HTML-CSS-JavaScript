@@ -1,16 +1,19 @@
-.bolder{
+.bolder h1, .bolder h2, .bolder h3, .bolder h4, #navbar-brand{
     color: #6b705c;
     font-family: 'Inria Serif', sans-serif;
     font-style: oblique;
     font-weight: 800;
 }
 
-.lighter {
+.lighter address, .lighter p, .lighter ol, .lighter ul{
     color: #333333;
     font-family: 'Arial', sans-serif;
     font-size: 14px;
     font-style: oblique;
+    line-height: 1.6;
 }
+
+#navbar-brand{ font-size: 18px;}
 
 .footer-text{
     color: #F5F5DC;
@@ -21,11 +24,6 @@
 .separator {
     border: none;
     border-top: 5px double #3f4238;
-}
-
-#logo-picture{
-    max-width: 100%;
-    height: auto;
 }
 
 #navbar{
@@ -86,6 +84,8 @@
     margin: 0 auto;
     padding: 5px 3px;
 } 
+
+#contact-us-container-right a{ text-decoration: none;} 
 
 #footer-container{background-color: #483C32;}
 
