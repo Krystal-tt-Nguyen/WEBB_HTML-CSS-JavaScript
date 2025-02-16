@@ -117,55 +117,65 @@ var arrayOfProducts = [
     }
 ];
 
-arrayOfProducts.forEach(function(product){
-    //PRODUCTINFO
+arrayOfProducts.forEach(function(product) {
     var productInfo = document.createElement('div');
     productInfo.id = 'product-info';
     productInfo.className ="col-11 col-md-4 mx-auto mb-5";
 
-    var image = document.createElement('img');
-    image.src = product.image; 
-    image.alt = product.alt;
-    image.height = 400;
-    image.width = 350;
+    var productImage = document.createElement('img');
+    productImage.src = product.image; 
+    productImage.alt = product.alt;
+    productImage.height = 350;
+    productImage.width = 300;
 
-    var name = document.createElement('h5');
-    name.innerHTML = product.name;
-    name.className = "mt-4 mb-3";
+    var productName = document.createElement('h5');
+    productName.innerHTML = product.name;
+    productName.className = "mt-4 mb-3";
 
-    var description = document.createElement('p');
-    description.innerHTML = product.description;
+    var productDescription = document.createElement('p');
+    productDescription.className="mt-2 mb-2";
+    productDescription.innerHTML = product.description;
 
-    var price = document.createElement('p');
-    price.innerHTML = product.price; 
+    var productPrice = document.createElement('p');
+    productPrice.className="mt-2 mb-2";
+    productPrice.innerHTML = product.price; 
 
     //BUYING OPTIONS
     var counter = document.createElement('div');
     counter.className = 'counter';
 
     var decreaseButton = document.createElement('button');
-    decreaseButton.textContent = '-';
+    decreaseButton.className = "product-button";
+    decreaseButton.textContent = '-';    
 
-    //-->skapa en siplay i mitten !!!!
+    //-->skapa en display i mitten + add to cart !!!!
 
     var increaseButton = document.createElement('button');
+    increaseButton.className = "product-button";
     increaseButton.textContent = '+';
 
-    // if (name.title == 'Vanilla Semla' || name.title == 'Original Croissant') {
-    //     var separator = document.createElement('hr');
-    //     separator.className = "separator";
-    //     productInfo.appendChild(separator);
-    // }
-
     //ADD TO HTML
-    productInfo.appendChild(image);
-    productInfo.appendChild(name);
-    productInfo.appendChild(description);   
-    productInfo.appendChild(price); 
+    productInfo.appendChild(productImage);
+    productInfo.appendChild(productName);
+    productInfo.appendChild(productDescription);   
+    productInfo.appendChild(productPrice); 
 
     counter.appendChild(decreaseButton);
     counter.appendChild(increaseButton);
-
     productInfo.appendChild(counter);
     productContainer.appendChild(productInfo);
+
+    const separatorList = ['Vanilla Semla', 'Original Croissant', 'Strawberry Cake','New York Cheesecake'];
+    if(separatorList.includes(product.name))
+    {
+        var separator = document.createElement('hr');
+        separator.className = "col-10 mx-auto mb-5 separator";
+        productContainer.appendChild(separator);
+    }
 });
+
+
+
+
+   
+    

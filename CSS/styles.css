@@ -95,6 +95,10 @@
 
 #product-info img{ box-shadow: 2px 2px 20px #7f7f7f;}
 
+#product-info p{ margin: 0 20px;}
+
+/* .product-button{} */
+
 #footer-container{background-color: #483C32;}
 
 #footer-container i{padding: 0 3px;}
