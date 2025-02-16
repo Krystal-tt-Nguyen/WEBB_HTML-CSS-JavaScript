@@ -1,4 +1,4 @@
-.bolder h1, .bolder h2, .bolder h3, .bolder h4, #navbar-brand{
+.bolder h1, .bolder h3, .bolder h5, #navbar-brand{
     color: #6b705c;
     font-family: 'Inria Serif', sans-serif;
     font-style: oblique;
@@ -86,6 +86,14 @@
 } 
 
 #contact-us-container-right a{ text-decoration: none;} 
+
+#product-info{
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#product-info img{ box-shadow: 2px 2px 20px #7f7f7f;}
 
 #footer-container{background-color: #483C32;}
 
