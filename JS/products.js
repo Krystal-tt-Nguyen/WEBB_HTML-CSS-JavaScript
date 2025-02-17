@@ -1,6 +1,5 @@
 var productContainer = document.getElementById('product-container'); 
 
-// Products-array
 var arrayOfProducts = [
     {
         name: "Original Semla",
@@ -88,13 +87,17 @@ var arrayOfProducts = [
     }
 ];
 
-// LOAD products-array into HTML
 arrayOfProducts.forEach(function(product) {
+    var productToDisplay = CreateProduct(product);    
+    productContainer.appendChild(productToDisplay);
+    AddSeparator(product, productContainer);
+});
 
-    // ASSIGN information to element property
+function CreateProduct(product)
+{
     var productInfo = document.createElement('div');
     productInfo.id = 'product-info';
-    productInfo.className ="col-11 col-md-4 mx-auto mb-5";
+    productInfo.className ="col-11 col-md-4 mx-auto mb-5 mt-3";
 
     var productImage = document.createElement('img');
     productImage.src = product.image; 
@@ -103,51 +106,73 @@ arrayOfProducts.forEach(function(product) {
     productImage.width = 300;
 
     var productName = document.createElement('h5');
-    productName.innerHTML = product.name;
+    productName.innerText = product.name;
     productName.className = "mt-4 mb-3";
 
     var productDescription = document.createElement('p');
     productDescription.className="mt-2 mb-2";
-    productDescription.innerHTML = product.description;
+    productDescription.innerText = product.description;
 
     var productPrice = document.createElement('p');
     productPrice.className="mt-2 mb-2";
     productPrice.innerHTML = product.price; 
 
-
-    // ADD: increase-btn, Decrease-btn, Display and AddToCart 
-    var counter = document.createElement('div');
-    counter.className = 'counter';
-
-    var decreaseButton = document.createElement('button');
-    decreaseButton.className = "product-button";
-    decreaseButton.textContent = '-';    
-
-    //-->skapa en display i mitten + add to cart !!!!
-
-    var increaseButton = document.createElement('button');
-    increaseButton.className = "product-button";
-    increaseButton.textContent = '+';
-
-
-    // APPEND: elements to HTML
+    var counter = CreatePurchaseOptions();
+    
     productInfo.appendChild(productImage);
     productInfo.appendChild(productName);
     productInfo.appendChild(productDescription);   
     productInfo.appendChild(productPrice); 
-
-    counter.appendChild(decreaseButton);
-    counter.appendChild(increaseButton);
     productInfo.appendChild(counter);
-    productContainer.appendChild(productInfo);
 
+    return productInfo;
+}
 
-    // ADD: separator
+function CreatePurchaseOptions() {
+    var purchaseOptions = document.createElement('div');
+    purchaseOptions.className = 'purchase-options';
+
+    var minusButton = document.createElement('button');
+    minusButton.className = "product-button";
+    minusButton.id = "minus-button";
+    minusButton.textContent = '-';    
+
+    var cakeQuantity  = document.createElement('input');
+    cakeQuantity.id='cake-quantity';
+    cakeQuantity.type ="text"
+    cakeQuantity.value = 0;
+
+    //-->skapa en add to cart !!!!
+
+    var plusButton = document.createElement('button');
+    plusButton.className = "product-button";
+    minusButton.id = "plus-button";
+    plusButton.textContent = '+';
+
+    var addButton = document.createElement('button');
+    addButton.id = "add-button";
+    addButton.className = "product-button";
+
+    var icon = document.createElement('i');
+    icon.className = "fa fa-cart-plus";
+    addButton.appendChild(icon);
+
+    purchaseOptions.appendChild(minusButton);
+    purchaseOptions.appendChild(cakeQuantity)
+    purchaseOptions.appendChild(plusButton);
+    purchaseOptions.appendChild(addButton);
+
+    return purchaseOptions;
+}
+
+function AddSeparator(product, productContainer) 
+{
     const separatorList = ['Vanilla Semla', 'Original Croissant', 'Strawberry Cake','New York Cheesecake'];
-    if(separatorList.includes(product.name))
+
+    if (separatorList.includes(product.name))
     {
         var separator = document.createElement('hr');
         separator.className = "col-10 mx-auto mb-5 separator";
         productContainer.appendChild(separator);
-    }
-});
+    }    
+}

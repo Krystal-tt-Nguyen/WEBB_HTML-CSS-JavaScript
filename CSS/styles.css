@@ -1,11 +1,11 @@
-.bolder h1, .bolder h3, .bolder h5, #navbar-brand{
+.bolder h1, .bolder h3, .bolder h5, #navbar-brand {
     color: #6b705c;
     font-family: 'Inria Serif', sans-serif;
     font-style: oblique;
     font-weight: 800;
 }
 
-.lighter address, .lighter p, .lighter ol, .lighter ul{
+.lighter address, .lighter p, .lighter ol, .lighter ul {
     color: #333333;
     font-family: 'Arial', sans-serif;
     font-size: 14px;
@@ -13,9 +13,9 @@
     line-height: 1.6;
 }
 
-#navbar-brand{ font-size: 18px;}
+#navbar-brand {font-size: 18px;}
 
-.footer-text{
+.footer-text {
     color: #F5F5DC;
     font-family: 'Verdana', sans-serif;
     font-size: 12px;
@@ -26,19 +26,19 @@
     border-top: 5px double #3f4238;
 }
 
-#navbar{
+#navbar {
     border-top: 1px solid #b7b7a4;
     border-bottom: 1px solid #b7b7a4;
 }
 
-#homepage-hero{
+#homepage-hero {
     background-image: url(/Images/cta-banner-picture.jpg);
     background-position: center;
     background-repeat: repeat-x;
     background-size: contain;
 }
 
-#cta{
+#cta {
     display: flex;
     align-items: center;    
     justify-content: center;
@@ -50,7 +50,7 @@
     gap: 15px;
 }
 
-#cta-content p{
+#cta-content p {
     color: whitesmoke; 
     font-family: 'Arial', sans-serif;
     font-style: oblique;
@@ -59,7 +59,7 @@
     text-shadow: 1px 1px #483C32;
 }
 
-.cta-button{
+.cta-button {
     border: 3px solid #a5a58d;
     border-radius: 50px;
     background-color: white;
@@ -69,15 +69,15 @@
     text-decoration: none;
 }
 
-#about-us-container{padding: 5%;}
+#about-us-container {padding: 5%;}
 
-#about-us-container-right img{
+#about-us-container-right img {
     max-width: 70%;
     height: auto;
     opacity: 0.8;
 }
 
-#contact-us-container-right{
+#contact-us-container-right {
     border: 3px double #a5a58d;
     height: auto;
     max-width: 300px;
@@ -85,25 +85,49 @@
     padding: 5px 3px;
 } 
 
-#contact-us-container-right a{ text-decoration: none;} 
+#contact-us-container-right a { text-decoration: none;} 
 
-#product-info{
+#product-info {
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: center;
 }
 
-#product-info img{ box-shadow: 2px 2px 20px #7f7f7f;}
+#product-info img {box-shadow: 2px 2px 20px #7f7f7f;}
 
-#product-info p{ margin: 0 20px;}
+#product-info p {margin: 0 20px;}
 
-/* .product-button{} */
+#cake-quantity { 
+    border: 1px solid #a5a58d;
+    border-radius: 30px;
+    font-size: 16px;
+    margin: 5px 10px;
+    text-align: center;
+    width: 60px;
+}
 
-#footer-container{background-color: #483C32;}
+.product-button {
+    background-color: white;
+    border: 1px solid #a5a58d;
+    border-radius: 30px;
+    color: #483C32;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0 25px;
+    text-decoration: none;
+}
 
-#footer-container i{padding: 0 3px;}
+#add-button { 
+    background-color: #a5a58d;
+    color: whitesmoke;
+    margin-left: 10px;
+}
 
-#copyright{
+#footer-container {background-color: #483C32;}
+
+#footer-container i {padding: 0 3px;}
+
+#copyright {
     display: flex;
     align-items: end;
     justify-content: flex-end;
