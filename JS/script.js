@@ -1,4 +1,4 @@
-
+// Fetch Header, Nav or Footer
 fetch('/HTML/header.html')
     .then(response => response.text())
     .then(data => {
