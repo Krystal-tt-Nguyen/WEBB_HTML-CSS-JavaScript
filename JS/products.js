@@ -142,8 +142,6 @@ function CreatePurchaseOptions() {
     cakeQuantity.type ="text"
     cakeQuantity.value = 0;
 
-    //-->skapa en add to cart !!!!
-
     var plusButton = document.createElement('button');
     plusButton.className = "product-button";
     minusButton.id = "plus-button";
@@ -176,3 +174,16 @@ function AddSeparator(product, productContainer)
         productContainer.appendChild(separator);
     }    
 }
+
+
+
+
+/* TODO:
+    * Lägga Eventlistener på +, - och Add button
+        * Räkna och visa quantity i input fönstret
+    * Skapa en kundvagnknapp högst upp på hemsidan för att gå till översikt
+        * Översikten ska innehålla sammanfattning med t.ex. antal produkter, 
+          totalpris och en knapp för att gå till kassan eller slutföra beställningen 
+    * Alla produkter/tjänster i listan (ej kundvagnen) ska kunna expanderas för att visa mer detaljerad information. 
+      Detta ska göras med hjälp av Modaler
+*/
