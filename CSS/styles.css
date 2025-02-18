@@ -97,7 +97,7 @@
 
 #product-info p {margin: 0 20px;}
 
-#cake-quantity { 
+.quantity-display { 
     border: 1px solid #a5a58d;
     border-radius: 30px;
     font-size: 16px;
@@ -117,7 +117,7 @@
     text-decoration: none;
 }
 
-#add-button { 
+.add-button { 
     background-color: #a5a58d;
     color: whitesmoke;
     margin-left: 10px;
