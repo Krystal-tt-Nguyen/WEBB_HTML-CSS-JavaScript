@@ -125,7 +125,7 @@ function CreateProduct(product)
     productImage.height = 350;
     productImage.width = 300;
 
-    var productName = document.createElement('h5');
+    var productName = document.createElement('h4');
     productName.innerText = product.name;
     productName.className = "mt-4 mb-3";
 
@@ -137,13 +137,13 @@ function CreateProduct(product)
     productPrice.className="mt-2 mb-2";
     productPrice.innerText = product.price; 
 
-    var counter = CreatePurchaseOptions(product);
+    var purchaseOptions = CreatePurchaseOptions(product);
     
     productInfo.appendChild(productImage);
     productInfo.appendChild(productName);
     productInfo.appendChild(productDescription);   
     productInfo.appendChild(productPrice); 
-    productInfo.appendChild(counter);
+    productInfo.appendChild(purchaseOptions);
 
     return productInfo;
 }
@@ -156,10 +156,10 @@ function CreatePurchaseOptions(product) {
     minusButton.className = "product-button minus-button";
     minusButton.textContent = '-';    
 
-    var display  = document.createElement('input');
-    display.className='quantity-display';
-    display.type ="text";
-    display.value = product.quantity;
+    var quantityDisplay = document.createElement('input');
+    quantityDisplay.className='quantity-display';
+    quantityDisplay.type ="text";
+    quantityDisplay.value = product.quantity;
 
     var plusButton = document.createElement('button');
     plusButton.className = "product-button plus-button";
@@ -173,7 +173,7 @@ function CreatePurchaseOptions(product) {
     addButton.appendChild(icon);
 
     purchaseOptions.appendChild(minusButton);
-    purchaseOptions.appendChild(display)
+    purchaseOptions.appendChild(quantityDisplay)
     purchaseOptions.appendChild(plusButton);
     purchaseOptions.appendChild(addButton);
 
@@ -181,7 +181,7 @@ function CreatePurchaseOptions(product) {
         if (product.quantity > 0)
         {
             product.quantity--;
-            display.value = product.quantity;
+            quantityDisplay.value = product.quantity;
         }
     });
 
@@ -189,12 +189,12 @@ function CreatePurchaseOptions(product) {
         if (product.quantity < 100) 
         {
             product.quantity++;
-            display.value = product.quantity;
+            quantityDisplay.value = product.quantity;
         }
     });
 
-    display.addEventListener('input', function() {
-        var newQuantity = parseInt(display.value);
+    quantityDisplay.addEventListener('input', function() {
+        var newQuantity = parseInt(quantityDisplay.value);
 
         if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity <= 100) 
         {
@@ -202,7 +202,7 @@ function CreatePurchaseOptions(product) {
         }
         else
         {
-            display.value = product.quantity;
+            quantityDisplay.value = product.quantity;
         }
     })
 
