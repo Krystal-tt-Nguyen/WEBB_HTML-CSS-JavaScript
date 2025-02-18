@@ -107,75 +107,84 @@ var arrayOfProducts = [
     }
 ];
 
-arrayOfProducts.forEach(function(product) {
-    var productToDisplay = CreateProduct(product);    
+arrayOfProducts.forEach(function(product, index) {
+    var productToDisplay = CreateProduct(product, index);    
     productsContainer.appendChild(productToDisplay);
     AddSeparator(product, productsContainer);
 });
 
-function CreateProduct(product)
+function CreateProduct(product, index)
 {
-    var productInfo = document.createElement('div');
-    productInfo.id = 'product-info';
-    productInfo.className ="col-11 col-md-4 mx-auto mb-5 mt-3";
+    var productContainer = document.createElement('div');
+    productContainer.id = `product-container-${index}`;
+    productContainer.className ="col-11 col-md-4 mx-auto mb-5 mt-3 product-info";
 
     var productImage = document.createElement('img');
     productImage.src = product.image; 
-    productImage.alt = product.alt;
+    productImage.alt = product.alt || `Product-picture-${index}`;
     productImage.height = 350;
     productImage.width = 300;
 
     var productName = document.createElement('h4');
-    productName.innerText = product.name;
+    productName.innerText = product.name || `Product-name-${index}`;;
     productName.className = "mt-4 mb-3";
 
     var productDescription = document.createElement('p');
     productDescription.className="mt-2 mb-2";
-    productDescription.innerText = product.description;
+    productDescription.innerText = product.description || "No description available";
 
     var productPrice = document.createElement('p');
     productPrice.className="mt-2 mb-2";
-    productPrice.innerText = product.price; 
+    productPrice.innerText = product.price || "No price information"; 
 
-    var purchaseOptions = CreatePurchaseOptions(product);
+    var purchaseOptions = CreatePurchaseOptions(product, index);
     
-    productInfo.appendChild(productImage);
-    productInfo.appendChild(productName);
-    productInfo.appendChild(productDescription);   
-    productInfo.appendChild(productPrice); 
-    productInfo.appendChild(purchaseOptions);
+    productContainer.appendChild(productImage);
+    productContainer.appendChild(productName);
+    productContainer.appendChild(productDescription);   
+    productContainer.appendChild(productPrice); 
+    productContainer.appendChild(purchaseOptions);
 
-    return productInfo;
+    return productContainer;
 }
 
-function CreatePurchaseOptions(product) {
+function CreatePurchaseOptions(product, index) {
     var purchaseOptions = document.createElement('div');
+    purchaseOptions.id = `purchase-options-${index}`;
     purchaseOptions.className = 'purchase-options';
 
     var minusButton = document.createElement('button');
+    minusButton.id = `minus-button-${index}`;
     minusButton.className = "product-button minus-button";
-    minusButton.textContent = '-';    
+    minusButton.textContent = '-';   
+    minusButton.setAttribute('aria-label', `Decrease quantity for product ${index}`); 
 
     var quantityDisplay = document.createElement('input');
+    quantityDisplay.id = `quantity-display-${index}`;
     quantityDisplay.className='quantity-display';
     quantityDisplay.type ="text";
     quantityDisplay.value = product.quantity;
+    quantityDisplay.setAttribute('aria-label', `Display quantity for product ${index}`);
 
     var plusButton = document.createElement('button');
+    plusButton.id = `plus-button-${index}`;
     plusButton.className = "product-button plus-button";
     plusButton.textContent = '+';
+    plusButton.setAttribute('aria-label', `Increase quantity for product ${index}`);
 
-    var addButton = document.createElement('button');
-    addButton.className = "product-button add-button";
+    var cartButton = document.createElement('button');
+    cartButton.id = `cart-button-${index}`;
+    cartButton.className = "product-button cart-button";
+    cartButton.setAttribute('aria-label', `Add product ${index} to cart`);
 
     var icon = document.createElement('i');
     icon.className = "fa fa-cart-plus";
-    addButton.appendChild(icon);
+    cartButton.appendChild(icon);
 
     purchaseOptions.appendChild(minusButton);
     purchaseOptions.appendChild(quantityDisplay)
     purchaseOptions.appendChild(plusButton);
-    purchaseOptions.appendChild(addButton);
+    purchaseOptions.appendChild(cartButton);
 
     minusButton.addEventListener('click', function() {
         if (product.quantity > 0)

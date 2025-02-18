@@ -87,15 +87,15 @@
 
 #contact-us-container-right a { text-decoration: none;} 
 
-#product-info {
+.product-info {
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: center;
 }
 
-#product-info img {box-shadow: 2px 2px 20px #7f7f7f;}
+.product-info img {box-shadow: 2px 2px 20px #7f7f7f;}
 
-#product-info p {margin: 0 20px;}
+.product-info p {margin: 0 20px;}
 
 .quantity-display { 
     border: 1px solid #a5a58d;
@@ -117,7 +117,7 @@
     text-decoration: none;
 }
 
-.add-button { 
+.cart-button { 
     background-color: #a5a58d;
     color: whitesmoke;
     margin-left: 10px;
