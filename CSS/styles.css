@@ -1,4 +1,4 @@
-.bolder h1, .bolder h3, .bolder h4, #navbar-brand {
+.bolder h1, .bolder h3, .bolder h4, .bolder h5, #navbar-brand {
     color: #6b705c;
     font-family: 'Inria Serif', sans-serif;
     font-style: oblique;
