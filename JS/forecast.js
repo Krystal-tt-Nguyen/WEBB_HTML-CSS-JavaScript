@@ -48,8 +48,8 @@ async function RenderWeatherInformation() {
             forecast.className = "mt-5 mb-3";
             forecast.innerHTML = `
                     <p>${item.date || "Unknown date"}</p>
-                    <p ><strong>Min:</strong> ${item.minTemp}°C ${item.minAppTemp}°C)</p>
-                    <p><strong>Max:</strong> ${item.maxTemp}°C ${item.maxAppTemp}°C</p>
+                    <p ><strong>Min:</strong> ${item.minTemp}°C (${item.minAppTemp}°C)</p>
+                    <p><strong>Max:</strong> ${item.maxTemp}°C (${item.maxAppTemp}°C)</p>
                     <img src="${wmoCodeIcons[item.weatherCode]}" alt="forecast-icon-${wmoCodeText[item.weatherCode]}" width="80" height="80">
                     <p>${wmoCodeText[item.weatherCode] || "Unknown weather description"}</p>
                     `;
