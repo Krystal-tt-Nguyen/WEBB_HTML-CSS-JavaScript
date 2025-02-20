@@ -137,11 +137,12 @@ var productsContainer = document.getElementById('products-container');
 arrayOfProducts.forEach(function(product, index) {
     var productToDisplay = LoadProduct(product, index);
     productsContainer.appendChild(productToDisplay);
+    //AddSeparator(product, productsContainer);
 });
 
 function LoadProduct(product, index) {
     var productCard = document.createElement('div');
-    productCard.className = "col-12 col-sm-6 col-md-4 col-lg-3 mt-3 mb-5 product-info";
+    productCard.className = "col-11 col-sm-6 col-md-4 col-lg-3 mt-3 mb-5 product-info";
 
     var imageContainer = document.createElement('div');
     imageContainer.id = `image-container-${index}`;
@@ -179,7 +180,6 @@ function LoadProduct(product, index) {
     return productCard;
 }
 
-
 var modalContainer = document.getElementById('modal-container');
 var modalContent = document.getElementById('modal-content');
 
@@ -190,11 +190,11 @@ function ShowProductModal(product, index) {
         <span class="close-button">&times;</span>
         <div class="modal-img">
             <img src="${product.image}" alt="${product.alt || 'product-image-' + index}" 
-            class="rounded-5" style="height: 200px; width: 175px;">
+            class="rounded-5" style="height: 175px; width: 150px;">
         </div>
         
         <div class="product-details">
-            <h5>${product.name}</h5>
+            <h5 class="mt-3">${product.name}</h5>
             <p>${product.description}</p>
             <p><strong>Price</strong>: ${product.price} ${product.currency}</p>
             <p>Allergens: ${allergensList}</p>
@@ -294,13 +294,14 @@ function CreatePurchaseOptions(product, index) {
 
 
 
+// function AddSeparator(product, productContainer) 
+// {
+//     const separatorList = ['Vanilla Semla', 'Original Croissant', 'Swedish Kladdkaka', 'Strawberry Cake','New York Cheesecake'];
 
-
-/* ANTECKNINGAR
-    1. Product.price är ett objekt som innehåller nyckel-värdepar - ej en array => kan ej skriva product.price[0]
-        - Object.values() är en inbyggd metod i JS som används för att få en array med alla värden från ett objekt.
-        - Math.min(...array) används för att hitta det minsta värdet i arrayen.
-        - ... är "spread syntax", som gör att värdena i arrayen blir separerade och kan skickas som individuella argument till Math.min
-    2. I JS används funktionen map() för att skapa en ny array med resultaten av att anropa en given funktion på varje element i en array.
-
-*/
+//     if (separatorList.includes(product.name))
+//     {
+//         var separator = document.createElement('hr');
+//         separator.className = "col-10 mx-auto mb-5 separator";
+//         productContainer.appendChild(separator);
+//     }    
+// }
