@@ -182,40 +182,44 @@ function LoadProduct(product, index) {
 
 var modalContainer = document.getElementById('modal-container');
 var modalContent = document.getElementById('modal-content');
-var closeButton = document.querySelector('#modal-container .close-button');
-
-closeButton.addEventListener('click', CloseProductModal);
-
-function CloseProductModal() {
-    modalContainer.style.display = "none";
-}
-
-modalContainer.addEventListener('click', function(event) {
-    if (event.target === modalContainer) {
-        CloseProductModal();
-    }
-});
 
 function ShowProductModal(product, index) {
     var allergensList = product.allergens.join(", ");
     
     modalContent.innerHTML = `
-        <img src="${product.image}" alt="${product.alt || 'product-image-' + index}" style="height: 200px; width: 175px;">
-        <div class="model-content">
-            <h4>${product.name}</h4>
+        <span class="close-button">&times;</span>
+        <div class="modal-img">
+            <img src="${product.image}" alt="${product.alt || 'product-image-' + index}" 
+            class="rounded-5" style="height: 200px; width: 175px;">
+        </div>
+        
+        <div class="product-details">
+            <h5>${product.name}</h5>
             <p>${product.description}</p>
             <p><strong>Price</strong>: ${product.price} ${product.currency}</p>
             <p>Allergens: ${allergensList}</p>
         </div>
     `;
     
+   var closeButton = document.querySelector('.close-button');
+   closeButton.addEventListener('click', CloseProductModal);
+
+   modalContainer.addEventListener('click', function(event) {
+       if (!modalContent.contains(event.target)) {
+           CloseProductModal();
+       }
+   });
+
     var purchaseOptions = CreatePurchaseOptions(product, index);
     modalContent.appendChild(purchaseOptions);
+
 
     modalContainer.style.display = "flex";
 }
 
-
+function CloseProductModal() {
+    modalContainer.style.display = "none";
+}
 
 function CreatePurchaseOptions(product, index) {
     var purchaseOptions = document.createElement('div');
