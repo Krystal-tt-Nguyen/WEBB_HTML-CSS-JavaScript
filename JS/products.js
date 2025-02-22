@@ -1,5 +1,4 @@
-
-var arrayOfProducts = [
+var productsArray = [
     {
         name: "Original Semla",
         image: "/Images/product-semla-original.jpg",
@@ -132,21 +131,20 @@ var arrayOfProducts = [
     }
 ];
 
+/* ----- Products.html ----- */
 var productsContainer = document.getElementById('products-container'); 
 
-arrayOfProducts.forEach(function(product, index) {
-    var productToDisplay = LoadProduct(product, index);
-    productsContainer.appendChild(productToDisplay);
-    //AddSeparator(product, productsContainer);
+productsArray.forEach(function(product, index) {
+    var productElement = LoadProduct(product, index);
+    productsContainer.appendChild(productElement);
 });
 
 function LoadProduct(product, index) {
-    var productCard = document.createElement('div');
-    productCard.className = "col-11 col-sm-6 col-md-4 col-lg-3 mt-3 mb-5 product-info";
+    var productDiv = document.createElement('div');
+    productDiv.className = "col-11 col-sm-6 col-md-4 col-lg-3 mt-3 mb-5 product-div";
 
-    var imageContainer = document.createElement('div');
-    imageContainer.id = `image-container-${index}`;
-    imageContainer.className = "image-container";
+    var productImageContainer = document.createElement('div');
+    productImageContainer.className = "product-image-container";
 
     var productImage = document.createElement('img');
     productImage.src = product.image;
@@ -156,16 +154,17 @@ function LoadProduct(product, index) {
     productImage.width = 300;
 
     var viewDetailsButton = document.createElement('button');
-    viewDetailsButton.id = `view-details-button-${index}`;
-    viewDetailsButton.className = "view-details-btn";
-    viewDetailsButton.textContent = "View Details";
+    viewDetailsButton.className = 'btn btn-primary view-details-btn';
+    viewDetailsButton.textContent = 'View Details';
+    viewDetailsButton.setAttribute('data-bs-toggle', 'modal');
+    viewDetailsButton.setAttribute('data-bs-target', '#modal-container');
 
-    viewDetailsButton.addEventListener("click", () => {
+    viewDetailsButton.addEventListener('click', function () {
         ShowProductModal(product, index);
     });
 
-    imageContainer.appendChild(productImage);
-    imageContainer.appendChild(viewDetailsButton);
+    productImageContainer.appendChild(productImage);
+    productImageContainer.appendChild(viewDetailsButton);
 
     var productName = document.createElement('h5');
     productName.innerText = product.name || `product-name-${index}`;
@@ -173,135 +172,106 @@ function LoadProduct(product, index) {
     var productPrice = document.createElement('p');
     productPrice.innerHTML = `<strong>Price</strong> ${product.price || 'N/A'} ${product.currency}`;
 
-    productCard.appendChild(imageContainer);
-    productCard.appendChild(productName);
-    productCard.appendChild(productPrice);
+    productDiv.appendChild(productImageContainer);
+    productDiv.appendChild(productName);
+    productDiv.appendChild(productPrice);
 
-    return productCard;
+    return productDiv;
 }
 
-var modalContainer = document.getElementById('modal-container');
-var modalContent = document.getElementById('modal-content');
+
+/* ----- Products Modal ----- */
+var modalHeader = document.querySelector('.modal-header');
+var modalBody = document.querySelector('.modal-body');
+var modalFooter = document.querySelector('.modal-footer');
 
 function ShowProductModal(product, index) {
     var allergensList = product.allergens.join(", ");
     
-    modalContent.innerHTML = `
-        <span class="close-button">&times;</span>
-        <div class="modal-img">
+    modalHeader.innerHTML = `
+        <h5 class="mt-3">${product.name}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    `;
+
+    modalBody.innerHTML = `
+        <div class="modal-img mb-4">
             <img src="${product.image}" alt="${product.alt || 'product-image-' + index}" 
-            class="rounded-5" style="height: 175px; width: 150px;">
+            class="rounded-2 img-fluid" style="height: 200px; width: auto;">
         </div>
         
-        <div class="product-details">
-            <h5 class="mt-3">${product.name}</h5>
-            <p>${product.description}</p>
-            <p><strong>Price</strong>: ${product.price} ${product.currency}</p>
-            <p>Allergens: ${allergensList}</p>
+        <div>
+            <p class="modal-product-details">${product.description}</p>
+            <p class="modal-product-details"><strong>Price</strong>: ${product.price} ${product.currency}</p>
+            <p class="modal-product-details"><strong>Allergens: </strong>${allergensList}</p>
         </div>
     `;
-    
-   var closeButton = document.querySelector('.close-button');
-   closeButton.addEventListener('click', CloseProductModal);
 
-   modalContainer.addEventListener('click', function(event) {
-       if (!modalContent.contains(event.target)) {
-           CloseProductModal();
-       }
-   });
-
-    var purchaseOptions = CreatePurchaseOptions(product, index);
-    modalContent.appendChild(purchaseOptions);
-
-
-    modalContainer.style.display = "flex";
+    modalFooter.innerHTML = "";
+    var options = LoadPurchaseOptions(product);
+    modalFooter.appendChild(options);
 }
 
-function CloseProductModal() {
-    modalContainer.style.display = "none";
-}
 
-function CreatePurchaseOptions(product, index) {
-    var purchaseOptions = document.createElement('div');
-    purchaseOptions.id = `purchase-options-${index}`;
-    purchaseOptions.className = 'purchase-options';
+/* ----- Products Purchase Options ----- */
+function LoadPurchaseOptions(product) {
+    var purchaseDiv = document.createElement('div');
+    purchaseDiv.className = 'purchase-options';
 
-    var minusButton = document.createElement('button');
-    minusButton.id = `minus-button-${index}`;
-    minusButton.className = "product-button";
-    minusButton.textContent = '-';   
-    minusButton.setAttribute('aria-label', `Decrease quantity for product ${index}`); 
+    purchaseDiv.innerHTML = `
+        <button class="product-button-style cart-button" aria-label="Add to cart">
+            <i class="fa fa-cart-plus"></i>
+        </button>
+    `;
 
-    var quantityDisplay = document.createElement('input');
-    quantityDisplay.id = `quantity-display-${index}`;
-    quantityDisplay.className='quantity-display';
-    quantityDisplay.type ="text";
-    quantityDisplay.value = product.quantity;
-    quantityDisplay.setAttribute('aria-label', `Display quantity for product ${index}`);
+    var cartButton = purchaseDiv.querySelector('.cart-button');
 
-    var plusButton = document.createElement('button');
-    plusButton.id = `plus-button-${index}`;
-    plusButton.className = "product-button";
-    plusButton.textContent = '+';
-    plusButton.setAttribute('aria-label', `Increase quantity for product ${index}`);
-
-    var cartButton = document.createElement('button');
-    cartButton.id = `cart-button-${index}`;
-    cartButton.className = "product-button cart-button";
-    cartButton.setAttribute('aria-label', `Add product ${index} to cart`);
-
-    var icon = document.createElement('i');
-    icon.className = "fa fa-cart-plus";
-    cartButton.appendChild(icon);
-
-    purchaseOptions.appendChild(minusButton);
-    purchaseOptions.appendChild(quantityDisplay)
-    purchaseOptions.appendChild(plusButton);
-    purchaseOptions.appendChild(cartButton);
-
-    minusButton.addEventListener('click', function() {
-        if (product.quantity > 0)
-        {
-            product.quantity--;
-            quantityDisplay.value = product.quantity;
-        }
+    cartButton.addEventListener('click', function() {
+        // Skriva kod för att lägga till produkten i kundvagnen
     });
 
-    plusButton.addEventListener('click', function() {
-        if (product.quantity < 100) 
-        {
-            product.quantity++;
-            quantityDisplay.value = product.quantity;
-        }
-    });
-
-    quantityDisplay.addEventListener('input', function() {
-        var newQuantity = parseInt(quantityDisplay.value);
-
-        if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity <= 100) 
-        {
-            product.quantity = newQuantity;
-        }
-        else
-        {
-            quantityDisplay.value = product.quantity;
-        }
-    })
-
-    return purchaseOptions;
+    return purchaseDiv;
 }
 
 
 
 
-// function AddSeparator(product, productContainer) 
-// {
-//     const separatorList = ['Vanilla Semla', 'Original Croissant', 'Swedish Kladdkaka', 'Strawberry Cake','New York Cheesecake'];
+// purchaseDiv.innerHTML = `
+//         <button class="product-button-style minus-button" aria-label="Decrease product quantity">-</button>
 
-//     if (separatorList.includes(product.name))
-//     {
-//         var separator = document.createElement('hr');
-//         separator.className = "col-10 mx-auto mb-5 separator";
-//         productContainer.appendChild(separator);
-//     }    
-// }
+//         <input type="number" class="quantity-display" aria-label="Display" value="${product.quantity}">
+
+//         <button class="product-button-style plus-button" aria-label="Increase product quantity">+</button>
+//     `;
+
+//     var minusButton = purchaseDiv.querySelector('.minus-button');
+//     var quantityDisplay = purchaseDiv.querySelector('.quantity-display');
+//     var plusButton = purchaseDiv.querySelector('.plus-button');
+   
+//     minusButton.addEventListener('click', function() {
+//         if (product.quantity > 0)
+//         {
+//             product.quantity--;
+//             quantityDisplay.value = product.quantity;
+//         }
+//     });
+
+//     quantityDisplay.addEventListener('input', function() {
+//         var newQuantity = parseInt(quantityDisplay.value);
+
+//         if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity <= 100) 
+//         {
+//             product.quantity = newQuantity;
+//         }
+//         else
+//         {
+//             quantityDisplay.value = product.quantity;
+//         }
+//     })
+
+//     plusButton.addEventListener('click', function() {
+//         if (product.quantity < 100) 
+//         {
+//             product.quantity++;
+//             quantityDisplay.value = product.quantity;
+//         }
+//     });

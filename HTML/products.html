@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <header id="header-container" class="row" style="min-height: 225px;">
+    <header id="product-header-container" class="row" style="min-height: 150px;">
         <div class="col-12 text-center">
-            <div id="header"></div>
+            <div id="product-header"></div>
         </div>
     </header>
 
@@ -26,12 +26,28 @@
     </nav>
 
     <main>
-        <div id="products-container" class="row justify-content-center bolder lighter" style="min-height: 1400px;">
-            <h1 class="text-center mt-4 mb-5">Our selection</h1>
+        <div id="products-container" class="row justify-content-center heading text" style="min-height: 1400px;">
+            <div class="col-10 text-center">
+                <h1 class="mt-3 mb-3">Our selection</h1>
+                <p class="mt-3 mb-3">
+                    Welcome to our bakery! Here you'll find our carefully curated selection of baked goods, all made with love 
+                    and passion for the finest ingredients. Inspired by the <strong>Swedish</strong> tradition of <strong>fika</strong>, 
+                    we offer everything from the classic <i>semla</i> and <i>cinnamon bun</i> to indulgent <i>kladdkaka</i> and more. 
+                    Whether you're craving something sweet and familiar or looking to try something new, we have something for every taste. 
+                    Our commitment to quality and flavor shines through in every product, and we always strive to deliver the best baking experience.
+                    Explore our menu and let yourself be tempted by our delicious creations!
+                </p>
+            </div>
         </div>     
 
-        <div id="modal-container" class="modal">
-            <div id="modal-content" class="modal-content"></div>
+        <div id="modal-container" class="modal fade heading text" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
         </div>        
     </main>
 
