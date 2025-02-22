@@ -1,8 +1,18 @@
+fetch('/HTML/footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer').innerHTML = data
+    })
+    .catch(error => {
+        console.error('Unable to load Footer: ', error)
+});
+
+
 const productsArray = [
     {
         id: 1,
         name: "Original Semla",
-        image: "/Images/product-semla-original.jpg",
+        image: "/Images/product-semla-original.webp",
         alt: "Original Swedish Semla with fluffy wheat bread, almond paste, and whipped cream",
         description: "A classic Swedish semla with fluffy wheat bread, almond paste, and a generous layer of whipped cream.",
         price: 49.00,
@@ -143,6 +153,7 @@ const productsArray = [
         allergens: ["wheat", "dairy", "egg"]
     }
 ];
+
 
 /* ----- Products.html ----- */
 const productsContainer = document.getElementById('products-container'); 
