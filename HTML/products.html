@@ -10,28 +10,68 @@
     <link rel="stylesheet" href="/CSS/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <header id="header-container" class="row" style="min-height: 225px;">
-        <div class="col-12 text-center">
-            <div id="header"></div>
-        </div>
-    </header>
-
-    <nav id="navbar-container" class="row" style="min-height: 80px;">
-        <div class="mb-3 col-10 mx-auto text-center">
-            <div id="navbar"></div>
+    <nav id="product-navbar" class="navbar navbar-expand-lg navbar-light sticky-top product-navbar heading text" style="min-height: 80px;">
+        <a id="product-navbar-img" class="navbar-brand" href="../index.html">
+            <i id="product-navbar-icon" class="fa-solid fa-cookie-bite fa-spin fa-2x" style="--fa-animation-duration: 15s;"></i>
+            <p id="product-navbar-brand">Kristello's Bakery</p>
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse heading" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href='/index.html'>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/HTML/about-us.html'>About Us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i id="check-out-logo" class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
+                        <header id="cart-header">
+                            <h6>Shopping Cart</h6>
+                            <hr class="dropdown-divider">
+                        </header>
+                        <div id="cart-body"></div>
+                        <footer id="cart-footer" class="mt-5 text-center"></footer>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </nav>
 
     <main>
-        <div id="products-container" class="row justify-content-center bolder lighter" style="min-height: 1400px;">
-            <h1 class="text-center mt-4 mb-5">Our selection</h1>
+        <div id="products-container" class="row justify-content-center heading text" style="min-height: 1400px;">
+            <div class="col-10 text-center">
+                <h1 class="mt-4 mb-3">Our selection</h1>
+                <p class="mt-4 mb-4">
+                    Welcome to our bakery! Here you'll find our carefully curated selection of baked goods, all made with love 
+                    and passion for the finest ingredients. Inspired by the <strong>Swedish</strong> tradition of <strong>fika</strong>, 
+                    we offer everything from the classic <i>semla</i> and <i>cinnamon bun</i> to indulgent <i>kladdkaka</i> and more. 
+                    Whether you're craving something sweet and familiar or looking to try something new, we have something for every taste. 
+                    Our commitment to quality and flavor shines through in every product, and we always strive to deliver the best baking experience.
+                    Explore our menu and let yourself be tempted by our delicious creations!
+                </p>
+            </div>
         </div>     
 
-        <div id="modal-container" class="modal">
-            <div id="modal-content" class="modal-content"></div>
+        <div id="modal-container" class="modal fade heading text" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
         </div>        
     </main>
 
@@ -41,7 +81,6 @@
         </div>
     </footer>
     
-    <script src="/JS/script.js"></script>
     <script src="/JS/products.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
