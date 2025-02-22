@@ -33,13 +33,16 @@
                     <a class="nav-link" href='/HTML/about-us.html'>About Us</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <!-- data-bs-toggle för Bootstrap 5 -->
-                        Cart (X)
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i id="check-out-logo" class="fa-solid fa-cart-shopping"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> <!-- Ändra från <div> till <ul> -->
-                        <div>
-                            <p>PLACERA KUNDVAGN INNEHÅLL HÄR</p>
-                        </div>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
+                        <header id="cart-header">
+                            <h6>Shopping Cart</h6>
+                            <hr class="dropdown-divider">
+                        </header>
+                        <div id="cart-body"></div>
+                        <footer id="cart-footer" class="mt-5 text-center"></footer>
                     </ul>
                 </li>
             </ul>
@@ -61,7 +64,7 @@
             </div>
         </div>     
 
-        <div id="modal-container" class="modal fade heading text" tabindex="-1" aria-hidden="true">
+        <div id="modal-container" class="modal fade heading text" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header"></div>

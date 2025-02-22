@@ -1,4 +1,4 @@
-.heading h1, .heading h3, .heading h4, .heading h5, #navbar-brand-style { 
+.heading h1, .heading h3, .heading h4, .heading h5, .heading h6, #navbar-brand-style { 
     color: #6b705c;
     font-family: 'Inria Serif', sans-serif;
     font-style: oblique;
@@ -114,6 +114,53 @@
     padding-right: 15px;
 }
 
+
+/* ---------- CART---------- */
+.dropdown-menu{
+    border: 1px solid #a5a58d;
+    width: 450px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.shopping-cart-div{
+    display: flex;
+    margin: 10px;
+}
+
+.quantity-display {
+    background-color: white;
+    border: 1px solid #a5a58d;
+    border-radius: 30px;
+    color: #483C32;
+    font-size: 14px;
+    text-align: center;
+    height: 30px;
+    width: 60px;
+}
+
+.cart-item-details{ 
+    margin-left: 8px;
+    width: 100px;
+}
+
+#check-out{
+    background-color: #28a745;
+    border: 1px solid #a5a58d;
+    border-radius: 30px;
+    color: white;
+    height: 35px;
+    width: 120px;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#check-out:hover {
+    background-color: #218838 ; 
+    border-color: #8a8a4e;
+}
+
+#check-out-logo { font-size: 18px;}
 
 /* ---------- SEPARATOR ---------- */
 .separator {
@@ -231,43 +278,19 @@
 
 .modal-footer { margin: auto; }
 
-.product-button-style {
-    background-color: white;
-    border: 1px solid #a5a58d;
-    border-radius: 30px;
-    color: #483C32;
-    cursor: pointer; 
-    font-size: 20px;
-    font-weight: 400;
-    padding: 0 20px;
-    text-decoration: none;
-}
-
 .cart-button {
     background-color: #a5a58d; 
+    border: 1px solid #a5a58d;
+    border-radius: 30px;
     color: whitesmoke; 
+    cursor: pointer; 
+    font-size: 20px;
+    padding: 0 20px;
     height: 40px;
     width: 100px;
-    margin: 0 10px;
-}
-
-.minus-button:hover, .plus-button:hover {
-    background-color: #c8c99f;
-    color: white;
 }
 
 .cart-button:hover { background-color: #218838; }
-
-.quantity-display {
-    background-color: white;
-    border: 1px solid #a5a58d;
-    border-radius: 30px;
-    color: #483C32;
-    font-size: 16px;
-    margin: 0 10px;
-    text-align: center;
-    width: 70px;
-}
 
 
 /* ---------- FOOTER ---------- */
