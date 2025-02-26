@@ -15,7 +15,7 @@
 }
 
 #homepage-hero{
-    background-image: url(/Images/cta-banner-picture.webp);
+    background-image: url(../Images/cta-banner-picture.webp);
     background-position: center;
     background-repeat: repeat-x;
     background-size: contain;
