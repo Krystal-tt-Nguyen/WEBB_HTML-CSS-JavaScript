@@ -1,11 +1,11 @@
-fetch('../HTML/footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('footer').innerHTML = data
-    })
-    .catch(error => {
-        console.error('Unable to load Footer: ', error)
-});
+// fetch('../HTML/footer.html')
+//     .then(response => response.text())
+//     .then(data => {
+//         document.getElementById('footer').innerHTML = data
+//     })
+//     .catch(error => {
+//         console.error('Unable to load Footer: ', error)
+// });
 
 const productsArray = [
     {
