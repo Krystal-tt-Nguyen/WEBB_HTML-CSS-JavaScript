@@ -1,26 +1,22 @@
-
 FetchWeatherInformation()
 .then(data => {
     if (data != null) {
         RenderWeatherInformation(data);
     }
     else {
-        console.log("unable to fetch weather information.")
+        console.log("Unable to fetch weather information.")
     }
 });
-
 
 async function FetchWeatherInformation()
 {
     const url = 'https://api.open-meteo.com/v1/forecast?latitude=57.7072&longitude=11.9668&daily=temperature_2m_min,temperature_2m_max,apparent_temperature_max,apparent_temperature_min,weather_code&timezone=auto&forecast_days=7';            
-    try 
-    {
+    try {
         let response = await fetch(url);
         let data = await response.json();
         return data;
     }
-    catch (error) 
-    {
+    catch (error) {
         console.log("Error fetching local weather: ", error);
         return null;
     }
@@ -52,14 +48,11 @@ function RenderWeatherInformation(data) {
                 <img src="${wmoCodeIcons[item.weatherCode]}" alt="forecast-icon-${wmoCodeText[item.weatherCode]}" width="80" height="80">
                 <p>${wmoCodeText[item.weatherCode] || "Unknown weather description"}</p>
                 `;
-
             forecastContainer.appendChild(forecast)
         }
     );
 }
 
-
-// JS Associative array --> Dictionary i C#
 const wmoCodeText = {
     0: "Clear sky",
     1: "Mainly clear",
@@ -92,32 +85,32 @@ const wmoCodeText = {
 };
 
 const wmoCodeIcons = {
-    0: "https://openweathermap.org/img/wn/01d@2x.png", // Clear sky
-    1: "https://openweathermap.org/img/wn/02d@2x.png", // Mainly clear
-    2: "https://openweathermap.org/img/wn/03d@2x.png", // Partly cloudy
-    3: "https://openweathermap.org/img/wn/04d@2x.png", // Overcast
-    45: "https://openweathermap.org/img/wn/50d@2x.png", // Fog and depositing rime fog
-    48: "https://openweathermap.org/img/wn/50d@2x.png", // Fog and depositing rime fog (same icon)
-    51: "https://openweathermap.org/img/wn/09d@2x.png", // Drizzle: Light intensity
-    53: "https://openweathermap.org/img/wn/09d@2x.png", // Drizzle: Moderate intensity
-    55: "https://openweathermap.org/img/wn/09d@2x.png", // Drizzle: Dense intensity
-    56: "https://openweathermap.org/img/wn/13d@2x.png", // Freezing Drizzle: Light intensity
-    57: "https://openweathermap.org/img/wn/13d@2x.png", // Freezing Drizzle: Dense intensity
-    61: "https://openweathermap.org/img/wn/10d@2x.png", // Rain: Slight intensity
-    63: "https://openweathermap.org/img/wn/10d@2x.png", // Rain: Moderate intensity
-    65: "https://openweathermap.org/img/wn/10d@2x.png", // Rain: Heavy intensity
-    66: "https://openweathermap.org/img/wn/13d@2x.png", // Freezing Rain: Light intensity
-    67: "https://openweathermap.org/img/wn/13d@2x.png", // Freezing Rain: Heavy intensity
-    71: "https://openweathermap.org/img/wn/13d@2x.png", // Snow fall: Slight intensity
-    73: "https://openweathermap.org/img/wn/13d@2x.png", // Snow fall: Moderate intensity
-    75: "https://openweathermap.org/img/wn/13d@2x.png", // Snow fall: Heavy intensity
-    77: "https://openweathermap.org/img/wn/13d@2x.png", // Snow grains
-    80: "https://openweathermap.org/img/wn/09d@2x.png", // Rain showers: Slight intensity
-    81: "https://openweathermap.org/img/wn/09d@2x.png", // Rain showers: Moderate intensity
-    82: "https://openweathermap.org/img/wn/09d@2x.png", // Rain showers: Violent intensity
-    85: "https://openweathermap.org/img/wn/13d@2x.png", // Snow showers: Slight intensity
-    86: "https://openweathermap.org/img/wn/13d@2x.png", // Snow showers: Heavy intensity
-    95: "https://openweathermap.org/img/wn/11d@2x.png", // Thunderstorm: Slight intensity
-    96: "https://openweathermap.org/img/wn/11d@2x.png", // Thunderstorm with slight hail
-    99: "https://openweathermap.org/img/wn/11d@2x.png"  // Thunderstorm with heavy hail
+    0: "https://openweathermap.org/img/wn/01d@2x.png",
+    1: "https://openweathermap.org/img/wn/02d@2x.png",
+    2: "https://openweathermap.org/img/wn/03d@2x.png",
+    3: "https://openweathermap.org/img/wn/04d@2x.png",
+    45: "https://openweathermap.org/img/wn/50d@2x.png",
+    48: "https://openweathermap.org/img/wn/50d@2x.png",
+    51: "https://openweathermap.org/img/wn/09d@2x.png",
+    53: "https://openweathermap.org/img/wn/09d@2x.png",
+    55: "https://openweathermap.org/img/wn/09d@2x.png",
+    56: "https://openweathermap.org/img/wn/13d@2x.png",
+    57: "https://openweathermap.org/img/wn/13d@2x.png",
+    61: "https://openweathermap.org/img/wn/10d@2x.png",
+    63: "https://openweathermap.org/img/wn/10d@2x.png",
+    65: "https://openweathermap.org/img/wn/10d@2x.png",
+    66: "https://openweathermap.org/img/wn/13d@2x.png",
+    67: "https://openweathermap.org/img/wn/13d@2x.png",
+    71: "https://openweathermap.org/img/wn/13d@2x.png",
+    73: "https://openweathermap.org/img/wn/13d@2x.png",
+    75: "https://openweathermap.org/img/wn/13d@2x.png",
+    77: "https://openweathermap.org/img/wn/13d@2x.png",
+    80: "https://openweathermap.org/img/wn/09d@2x.png",
+    81: "https://openweathermap.org/img/wn/09d@2x.png",
+    82: "https://openweathermap.org/img/wn/09d@2x.png",
+    85: "https://openweathermap.org/img/wn/13d@2x.png",
+    86: "https://openweathermap.org/img/wn/13d@2x.png",
+    95: "https://openweathermap.org/img/wn/11d@2x.png",
+    96: "https://openweathermap.org/img/wn/11d@2x.png",
+    99: "https://openweathermap.org/img/wn/11d@2x.png"
 };

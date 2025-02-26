@@ -7,7 +7,6 @@ fetch('/HTML/footer.html')
         console.error('Unable to load Footer: ', error)
 });
 
-
 const productsArray = [
     {
         id: 1,
@@ -125,7 +124,7 @@ const productsArray = [
         image: "/Images/product-blueberry-cheesecake.jpg",
         alt: "Blueberry Cheesecake with fresh blueberries",
         description: "A creamy and smooth cheesecake topped with fresh blueberries and a hint of lemon.",
-        price: 289.00, 
+        price: 72.00, 
         currency: "kr",
         quantity: 0,
         allergens: ["wheat", "dairy", "egg"]
@@ -136,7 +135,7 @@ const productsArray = [
         image: "/Images/product-newyork-cheesecake.jpg",
         alt: "Rich New York-style cheesecake with graham cracker crust",
         description: "A rich and creamy New York-style cheesecake with a graham cracker crust and a velvety texture.",
-        price: 259.00, 
+        price: 63.00, 
         currency: "kr",
         quantity: 0,
         allergens: ["wheat", "dairy", "egg"]
@@ -154,8 +153,6 @@ const productsArray = [
     }
 ];
 
-
-/* ----- Products.html ----- */
 const productsContainer = document.getElementById('products-container'); 
 
 productsArray.forEach(function(product, index) {
@@ -171,6 +168,7 @@ function LoadProduct(product, index) {
     productImageContainer.className = "product-image-container";
 
     const productImage = document.createElement('img');
+    productImage.loading ="lazy";
     productImage.src = product.image;
     productImage.alt = product.alt || `product-image-${index}`;
     productImage.className = "product-image";
@@ -203,8 +201,6 @@ function LoadProduct(product, index) {
     return productDiv;
 }
 
-
-/* ----- Products Modal ----- */
 const modalHeader = document.querySelector('.modal-header');
 const modalBody = document.querySelector('.modal-body');
 const modalFooter = document.querySelector('.modal-footer');
@@ -246,12 +242,9 @@ function LoadPurchaseOption(product) {
     `;
 
     AddToCart(purchaseDiv, product);
-
     return purchaseDiv;
 }
 
-
-/* ----- Shopping Cart ----- */
 const cartBody = document.getElementById('cart-body');
 const cartFooter = document.getElementById('cart-footer');
 const navbarDropdown = document.getElementById('navbarDropdown');
@@ -261,25 +254,20 @@ const cartItemsArray = [];
 function AddToCart(purchaseDiv, product) {
     const cartButton = purchaseDiv.querySelector('.cart-button');
     cartButton.addEventListener('click', function() {
-
-        //find() i JavaScript motsvarar ungefär FirstOrDefault i C#
         const existingProduct = cartItemsArray.find(item => item.id == product.id);
 
-        if(existingProduct)
-        {
+        if(existingProduct) {
             existingProduct.quantity++;
         }
-        else
-        {
+        else{
             // Spread operator (...) möjliggör kopiering av hela eller delar av en befintlig array eller objekt till en annan
-            // => ändringar som görs i kundvagnen påverkar ej quantity i productsArray
+            // => ändringar som görs i kundvagnen ska ej påverkar quantity i productsArray
             const productCopy = {...product};
             productCopy.quantity = 1;
             cartItemsArray.push(productCopy);
         }
         
         UpdateShoppingCart();
-        
     });
 }
 
@@ -335,21 +323,18 @@ function LoadCartItem(cartItem) {
     quantityDisplay.addEventListener('input', function() {
         var newQuantity = parseInt(quantityDisplay.value);
 
-        if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity <= 100) 
-        {
+        if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity <= 100){
             cartItem.quantity = newQuantity;
         }
         
         // Javascript har ej array.Remove() --> för ta bort ett specifikt objekt används array.slice(start, end)
-        if (newQuantity == 0) 
-        {
+        if (newQuantity == 0){
             // findIndex() returnerar index för första elementet som matchar ett villkor. Returnerar -1 om inget matchar
             const index = cartItemsArray.findIndex(i => i.id == cartItem.id);
             if (index != -1) {
                 cartItemsArray.splice(index, 1);
             }
         }
-
         UpdateShoppingCart();
     })
 
