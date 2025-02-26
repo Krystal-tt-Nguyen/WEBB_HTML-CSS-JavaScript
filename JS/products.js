@@ -1,12 +1,3 @@
-// fetch('../HTML/footer.html')
-//     .then(response => response.text())
-//     .then(data => {
-//         document.getElementById('footer').innerHTML = data
-//     })
-//     .catch(error => {
-//         console.error('Unable to load Footer: ', error)
-// });
-
 const productsArray = [
     {
         id: 1,
@@ -22,7 +13,7 @@ const productsArray = [
     {
         id: 2,
         name: "Vanilla Semla",
-        image: "../Images/product-semla-vanilla.jpg",
+        image: "../Images/product-semla-vanilla.webp",
         alt: "Vanilla Semla filled with smooth vanilla cream",
         description: "A twist on the traditional semla, filled with smooth vanilla cream instead of almond paste.",
         price: 59.00, 
@@ -33,7 +24,7 @@ const productsArray = [
     {
         id: 3,
         name: "Almond Croissant",
-        image: "../Images/product-croissant-almond.jpg",
+        image: "../Images/product-croissant-almond.webp",
         alt: "Almond Croissant filled with almond paste and topped with chopped almonds",
         description: "A buttery croissant filled with almond paste, topped with sweet glaze and chopped almonds.",
         price: 39.00, 
@@ -44,7 +35,7 @@ const productsArray = [
     {
         id: 4,
         name: "Original Croissant",
-        image: "../Images/product-croissant-original.jpg",
+        image: "../Images/product-croissant-original.webp",
         alt: "Classic buttery croissant with a crispy exterior and flaky interior",
         description: "A classic buttery croissant with a crispy exterior and soft, flaky interior.",
         price: 25.00, 
@@ -55,7 +46,7 @@ const productsArray = [
     {
         id: 5,
         name: "Swedish Cinnamon Bun",
-        image: "../Images/product-cinnamon-bun.jpg",
+        image: "../Images/product-cinnamon-bun.webp",
         alt: "Traditional Swedish cinnamon bun with a soft, sweet dough and a cinnamon-sugar filling",
         description: "A classic Swedish cinnamon bun, known as 'Kanelbulle', with a soft, fluffy dough, cinnamon-sugar filling, and a sprinkle of pearl sugar on top.",
         price: 49.00, 
@@ -66,7 +57,7 @@ const productsArray = [
     {
         id: 6,
         name: "Swedish Kladdkaka",
-        image: "../Images/product-kladdkaka.jpg",
+        image: "../Images/product-kladdkaka.webp",
         alt: "Sticky Swedish chocolate cake (Kladdkaka)",
         description: "A Swedish sticky chocolate cake that's dense, gooey, and utterly indulgent.",
         price: 42.50,
@@ -77,7 +68,7 @@ const productsArray = [
     {
         id: 7,
         name: "Blackberry Cake",
-        image: "../Images/product-blackberry-cake.jpg",
+        image: "../Images/product-blackberry-cake.webp",
         alt: "Moist blackberry cake with creamy filling",
         description: "A moist cake with fresh blackberries and a creamy filling that melts in your mouth.",
         price: 339.00,
@@ -88,7 +79,7 @@ const productsArray = [
     {
         id: 8,
         name: "Carrot Cake",
-        image: "../Images/product-carrot-cake.jpg",
+        image: "../Images/product-carrot-cake.webp",
         alt: "Carrot cake with cream cheese frosting and walnuts",
         description: "A rich and spiced carrot cake with cream cheese frosting and a sprinkle of walnuts.",
         price: 219.00,
@@ -99,7 +90,7 @@ const productsArray = [
     {
         id: 9,
         name: "Chocolate Cake",
-        image: "../Images/product-chocolate-cake.jpg",
+        image: "../Images/product-chocolate-cake.webp",
         alt: "Decadent chocolate cake with layers of ganache",
         description: "A decadent, moist chocolate cake with layers of smooth chocolate ganache.",
         price: 319.00, 
@@ -110,7 +101,7 @@ const productsArray = [
     {
         id: 10,
         name: "Strawberry Cake",
-        image: "../Images/product-strawberry-cake.jpg",
+        image: "../Images/product-strawberry-cake.webp",
         alt: "Light strawberry cake with whipped cream topping",
         description: "A light and fluffy cake with fresh strawberries and a sweet whipped cream topping.",
         price: 309.00, 
@@ -121,7 +112,7 @@ const productsArray = [
     {
         id: 11,
         name: "Blueberry Cheesecake",
-        image: "../Images/product-blueberry-cheesecake.jpg",
+        image: "../Images/product-blueberry-cheesecake.webp",
         alt: "Blueberry Cheesecake with fresh blueberries",
         description: "A creamy and smooth cheesecake topped with fresh blueberries and a hint of lemon.",
         price: 72.00, 
@@ -132,7 +123,7 @@ const productsArray = [
     {
         id: 12,
         name: "New York Cheesecake",
-        image: "../Images/product-newyork-cheesecake.jpg",
+        image: "../Images/product-newyork-cheesecake.webp",
         alt: "Rich New York-style cheesecake with graham cracker crust",
         description: "A rich and creamy New York-style cheesecake with a graham cracker crust and a velvety texture.",
         price: 63.00, 
@@ -143,7 +134,7 @@ const productsArray = [
     {
         id: 13,
         name: "Lemon Pie",
-        image: "../Images/product-lemon-pie.jpg",
+        image: "../Images/product-lemon-pie.webp",
         alt: "Tangy lemon pie with buttery, flaky crust",
         description: "A tangy and refreshing lemon pie with a buttery, flaky crust and a smooth, zesty filling.",
         price: 249.00, 
@@ -168,12 +159,19 @@ function LoadProduct(product, index) {
     productImageContainer.className = "product-image-container";
 
     const productImage = document.createElement('img');
-    productImage.loading ="lazy";
+    productImage.id = product.id;
     productImage.src = product.image;
     productImage.alt = product.alt || `product-image-${index}`;
     productImage.className = "product-image";
     productImage.height = 350;
     productImage.width = 300;
+
+    if(index >= 0 && index < 3 || index === 5) {
+        productImage.loading = "eager";
+    }
+    else{
+        productImage.loading = "lazy";
+    }
 
     const viewDetailsButton = document.createElement('button');
     viewDetailsButton.className = 'btn btn-primary view-details-btn';
