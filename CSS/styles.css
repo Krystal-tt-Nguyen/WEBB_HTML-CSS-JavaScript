@@ -1,4 +1,4 @@
-.heading h1, .heading h3, .heading h4, .heading h5, .heading h6, #navbar-brand-style { 
+.heading h1, .heading h3, .heading h4, .heading h5, .heading h6, #navbar-brand-style{ 
     color: #6b705c;
     font-family: 'Inria Serif', sans-serif;
     font-style: oblique;
@@ -6,7 +6,7 @@
     text-align: center; 
 }
 
-.text address, .text p, .text ol, .text ul {
+.text address, .text p, .text ol, .text ul{
     color: #333333;
     font-family: 'Arial', sans-serif;
     font-size: 14px;
@@ -14,28 +14,26 @@
     line-height: 1.6;
 }
 
-
-/* ---------- INDEX ---------- */
-#homepage-hero {
-    background-image: url(/Images/cta-banner-picture.jpg);
+#homepage-hero{
+    background-image: url(/Images/cta-banner-picture.webp);
     background-position: center;
     background-repeat: repeat-x;
     background-size: contain;
 }
 
-#cta {
+#cta{
     align-items: center;    
     display: flex;
     justify-content: center;
     text-align: center;
 }
 
-#cta-content {
+#cta-content{
     gap: 15px;
     justify-content: center; 
 }
 
-#cta-content p {
+#cta-content p{
     color: whitesmoke; 
     font-family: 'Arial', sans-serif;
     font-style: oblique;
@@ -44,7 +42,7 @@
     text-shadow: 1px 1px #483C32;
 }
 
-.cta-button {
+.cta-button{
     border: 3px solid #a5a58d;
     border-radius: 50px;
     background-color: white;
@@ -54,7 +52,7 @@
     text-decoration: none;
 }
 
-#forecast {
+#forecast{
     background-color: #fbfaf7;
     border: 1px double #f0efeb;
     border-radius: 20px;
@@ -62,7 +60,7 @@
     padding: 20px 0;
 }
 
-#forecast h6 {
+#forecast h6{
     font-size: 16px; 
     font-weight: bold; 
     color: #3a3a3a; 
@@ -72,7 +70,7 @@
     letter-spacing: 1px; /
 }
 
-#forecast p {
+#forecast p{
     font-size: 14px; 
     line-height: 1.6; 
     color: #5a5a5a; 
@@ -80,20 +78,20 @@
     text-align: center; 
 }
 
-
-/* ---------- NAV ---------- */
-.navbar {
+.navbar{
     border-top: 1px solid #b7b7a4;
     border-bottom: 1px solid #b7b7a4;
 }
 
-#product-navbar { background-color: #edede9; }
+#product-navbar {background-color: #edede9;}
 
-#navbar-brand-style { font-size: 18px; }
+#navbar-brand-style {font-size: 18px;}
 
-#product-navbar-img { display: flex; }
+.navbar-nav a {font-size: 16px;}
 
-#product-navbar-icon {
+#product-navbar-img {display: flex;}
+
+#product-navbar-icon{
     color: #5a5a5a;
     margin-left: 15px;
 }
@@ -108,14 +106,13 @@
     margin-left: 15px;
 }
 
-#product-navbar li {
+#product-navbar li{
     font-size: 16px;
     font-weight: 500;
-    padding-right: 15px;
+    margin-left: 15px;
+    margin-right: 10px;
 }
 
-
-/* ---------- CART---------- */
 .dropdown-menu{
     border: 1px solid #a5a58d;
     width: 450px;
@@ -128,7 +125,7 @@
     margin: 10px;
 }
 
-.quantity-display {
+.quantity-display{
     background-color: white;
     border: 1px solid #a5a58d;
     border-radius: 30px;
@@ -155,30 +152,27 @@
     transition: background-color 0.3s ease;
 }
 
-#check-out:hover {
+#check-out:hover{
     background-color: #218838 ; 
     border-color: #8a8a4e;
 }
 
-#check-out-logo { font-size: 18px;}
+#check-out-logo{font-size: 18px;}
 
-/* ---------- SEPARATOR ---------- */
-.separator {
+.separator{
     border: none;
     border-top: 5px double #3f4238;
 }
 
+#about-us-container {padding: 5%;}
 
-/* ---------- ABOUT US ---------- */
-#about-us-container { padding: 5%; }
-
-#about-us-container-right img {
+#about-us-container-right img{
     height: auto;
     max-width: 70%;
     opacity: 0.8;
 }
 
-#contact-us-container-right {
+#contact-us-container-right{
     border: 3px double #a5a58d;
     height: auto;
     max-width: 300px;
@@ -186,17 +180,15 @@
     padding: 5px 3px;
 } 
 
-#contact-us-container-right a { text-decoration: none;} 
+#contact-us-container-right a {text-decoration: none;} 
 
-
-/* ---------- PRODUCTS ----------  */
-.products-container {
+.products-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.product-div { 
+.product-div{ 
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -211,7 +203,7 @@
     width: 100%;
 }
 
-.product-image {
+.product-image{
     border-radius: 10px;
     margin-bottom: 10px;
     object-fit: cover;
@@ -219,7 +211,7 @@
     width: 100%;
 }
 
-.view-details-btn {
+.view-details-btn{
     position: absolute; 
     top: 50%; 
     left: 50%;
@@ -234,16 +226,14 @@
     padding: 10px 20px;
 }
 
-.product-image-container:hover .view-details-btn {
+.product-image-container:hover .view-details-btn{
     opacity: 1;
     visibility: visible;
 }
 
-.view-details-btn:hover { background-color:#6b705c;}
+.view-details-btn:hover {background-color:#6b705c;}
 
-
-/* ---------- MODAL ---------- */
-.modal-content {
+.modal-content{
     background-color: whitesmoke;
     border: 1px solid #888;
     border-radius: 10px;
@@ -251,19 +241,19 @@
     padding: 20px;
 } 
 
-.modal-header {
+.modal-header{
     display: flex;
     justify-content: space-between; 
     align-items: center;
     text-align: center; 
 }
 
-.modal-header h5 {
+.modal-header h5{
     flex-grow: 1; 
     font-weight: 500;
 }
 
-.btn-close {
+.btn-close{
     position: absolute;
     color: #aaa;
     cursor: pointer;
@@ -272,13 +262,13 @@
     right: 15px;
 }
 
-.modal-img { text-align: center; }
+.modal-img {text-align: center;}
 
-.modal-product-details { text-align: center;}
+.modal-product-details {text-align: center;}
 
-.modal-footer { margin: auto; }
+.modal-footer {margin: auto;}
 
-.cart-button {
+.cart-button{
     background-color: #a5a58d; 
     border: 1px solid #a5a58d;
     border-radius: 30px;
@@ -290,31 +280,29 @@
     width: 100px;
 }
 
-.cart-button:hover { background-color: #218838; }
+.cart-button:hover {background-color: #218838;}
 
-
-/* ---------- FOOTER ---------- */
 #footer-container {background-color: #483C32;}
 
-.footer-text {
+.footer-text{
     color: #F5F5DC;
     font-family: 'Verdana', sans-serif;
     font-size: 12px;
 }
 
-#footer-container i {
+#footer-container i{
     color:#F5F5DC;
     font-size: 28px;
     padding: 0 3px;
 }
 
-#payment {
+#payment{
     display: flex; 
     align-items: center; 
     gap: 10px;
 }
 
-#copyright {
+#copyright{
     align-items: end;
     display: flex;
     font-size: 10px;
