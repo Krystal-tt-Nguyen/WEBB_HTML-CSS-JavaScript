@@ -1,6 +1,6 @@
 .heading h1, .heading h3, .heading h4, .heading h5, .heading h6, #navbar-brand-style{ 
     color: #6b705c;
-    font-family: 'Inria Serif', sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: oblique;
     font-weight: 600;
     text-align: center; 
@@ -98,7 +98,7 @@
 
 #product-navbar-brand{
     color: #5a5a5a;
-    font-family: 'Inria Serif', sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: oblique;
     font-size: 18px;
     font-weight: 600;
@@ -188,7 +188,7 @@
     justify-content: center;
 }
 
-.product-div{ 
+.product-body{ 
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

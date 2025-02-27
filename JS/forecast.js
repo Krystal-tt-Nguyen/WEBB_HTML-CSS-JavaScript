@@ -24,9 +24,7 @@ async function FetchWeatherInformation()
 
 function RenderWeatherInformation(data) {
     const forecastContainer = document.getElementById('forecast');
-       
-    // map()-metoden skapar en ny array genom att anropa en funktion på varje element i den ursprungliga arrayen. 
-    // index är inbyggt funktion i JavaScript, hämtar det aktuella elementet i arrayen
+    
     var forecastList = data.daily.time.map((time, index) => {
         return {
             date: time,

@@ -144,6 +144,7 @@ const productsArray = [
     }
 ];
 
+const navbarDropdown = document.getElementById('navbarDropdown');
 const productsContainer = document.getElementById('products-container'); 
 
 productsArray.forEach(function(product, index) {
@@ -152,8 +153,10 @@ productsArray.forEach(function(product, index) {
 });
 
 function LoadProduct(product, index) {
-    const productDiv = document.createElement('div');
-    productDiv.className = "col-11 col-sm-6 col-md-4 col-lg-3 mt-3 mb-5 product-div";
+    const productBody = document.createElement('div');
+    productBody.className = "col-8 col-sm-6 col-md-4 col-lg-3 mt-3 mb-5 product-body";
+    productBody.height = 460;
+    productBody.width = '100%';
 
     const productImageContainer = document.createElement('div');
     productImageContainer.className = "product-image-container";
@@ -163,45 +166,49 @@ function LoadProduct(product, index) {
     productImage.src = product.image;
     productImage.alt = product.alt || `product-image-${index}`;
     productImage.className = "product-image";
-    productImage.height = 350;
-    productImage.width = 300;
+    productImage.height = 332;
+    productImage.width = 322;
 
-    if(index >= 0 && index < 3 || index === 5) {
+    if (index === 0) {
         productImage.loading = "eager";
     }
     else{
         productImage.loading = "lazy";
     }
-
+        
     const viewDetailsButton = document.createElement('button');
     viewDetailsButton.className = 'btn btn-primary view-details-btn';
     viewDetailsButton.textContent = 'View Details';
     viewDetailsButton.setAttribute('data-bs-toggle', 'modal');
     viewDetailsButton.setAttribute('data-bs-target', '#modal-container');
-
-    viewDetailsButton.addEventListener('click', function () {
-        ShowProductModal(product, index);
-    });
-
+    
     productImageContainer.appendChild(productImage);
     productImageContainer.appendChild(viewDetailsButton);
-
+    productBody.appendChild(productImageContainer);
+    
     const productName = document.createElement('h5');
     productName.innerText = product.name || `product-name-${index}`;
 
     const productPrice = document.createElement('p');
     productPrice.innerHTML = `<strong>Price</strong> ${product.price || 'N/A'} ${product.currency}`;
 
-    productDiv.appendChild(productImageContainer);
-    productDiv.appendChild(productName);
-    productDiv.appendChild(productPrice);
+    productBody.appendChild(productName);
+    productBody.appendChild(productPrice);
 
-    return productDiv;
+    viewDetailsButton.addEventListener('click', function () {
+        ShowProductModal(product, index);
+    });
+
+    return productBody;
 }
 
 const modalHeader = document.querySelector('.modal-header');
 const modalBody = document.querySelector('.modal-body');
 const modalFooter = document.querySelector('.modal-footer');
+
+const cartBody = document.getElementById('cart-body');
+const cartFooter = document.getElementById('cart-footer');
+const cartItemsArray = [];
 
 function ShowProductModal(product, index) {
     let allergensList = product.allergens.join(", ");
@@ -224,42 +231,22 @@ function ShowProductModal(product, index) {
         </div>
     `;
 
-    modalFooter.innerHTML = "";
-    var options = LoadPurchaseOption(product);
-    modalFooter.appendChild(options);
-}
-
-function LoadPurchaseOption(product) {
-    const purchaseDiv = document.createElement('div');
-    purchaseDiv.className = 'purchase-options';
-    
-    purchaseDiv.innerHTML = `
-        <button class="cart-button" aria-label="Add to cart">
-        <i class="fa fa-cart-plus"></i>
-        </button>
+    modalFooter.innerHTML = `
+        <div class="purchase-options">
+            <button class="cart-button" aria-label="Add to cart">
+                <i class="fa fa-cart-plus"></i>
+            </button>
+        </div>
     `;
 
-    AddToCart(purchaseDiv, product);
-    return purchaseDiv;
-}
-
-const cartBody = document.getElementById('cart-body');
-const cartFooter = document.getElementById('cart-footer');
-const navbarDropdown = document.getElementById('navbarDropdown');
-
-const cartItemsArray = [];
-
-function AddToCart(purchaseDiv, product) {
-    const cartButton = purchaseDiv.querySelector('.cart-button');
+    const cartButton = modalFooter.querySelector('.cart-button');
     cartButton.addEventListener('click', function() {
         const existingProduct = cartItemsArray.find(item => item.id == product.id);
 
         if(existingProduct) {
             existingProduct.quantity++;
         }
-        else{
-            // Spread operator (...) möjliggör kopiering av hela eller delar av en befintlig array eller objekt till en annan
-            // => ändringar som görs i kundvagnen ska ej påverkar quantity i productsArray
+        else {
             const productCopy = {...product};
             productCopy.quantity = 1;
             cartItemsArray.push(productCopy);
@@ -276,9 +263,8 @@ function UpdateShoppingCart() {
     cartItemsArray.forEach(cartItem => {
         let cartElement = LoadCartItem(cartItem);
         cartBody.appendChild(cartElement);
-        totalPrice += (cartItem.quantity * cartItem.price);
         
-        console.log(`${cartItem.name} ${cartItem.quantity}`);
+        totalPrice += (cartItem.quantity * cartItem.price);
     });
     
     cartFooter.innerHTML = `
@@ -286,14 +272,9 @@ function UpdateShoppingCart() {
         <button id="check-out">Check Out</button>
     `;
 
-    if (cartItemsArray.length > 0) {
-        navbarDropdown.innerHTML = `
-            <i id="check-out-logo" class="fa-solid fa-cart-shopping fa-beat"></i> (${cartItemsArray.length})
-        `;
-    }
-    else {
-        navbarDropdown.innerHTML = `<i id="check-out-logo" class="fa-solid fa-cart-shopping"></i>`;
-    }
+    navbarDropdown.innerHTML = cartItemsArray.length > 0
+    ? `<i id="check-out-logo" class="fa-solid fa-cart-shopping fa-beat"></i> (${cartItemsArray.length})`
+    : `<i id="check-out-logo" class="fa-solid fa-cart-shopping"></i>`;
 }
 
 function LoadCartItem(cartItem) {
@@ -301,41 +282,38 @@ function LoadCartItem(cartItem) {
     shoppingCartDiv.className = "shopping-cart-div mb-3";
     let subTotal = cartItem.price * cartItem.quantity;
 
-    if(cartItem.quantity > 0)
-    {
-        shoppingCartDiv.innerHTML = `
-            <div id="cart-image-container">
-                <img src="${cartItem.image}" alt="${cartItem.alt}" class="rounded-2" width="100", height="100">
-            </div>
-            <div class="cart-item-details text-start">
-                <p><strong>${cartItem.name}</strong></p>
-                <p><i>${cartItem.price} ${cartItem.currency}</i></p>
-            </div>
-            <input type="number" class="quantity-display mx-auto" min="0" max="100" aria-label="Display" value="${cartItem.quantity}">
-            <p class="mx-auto"><strong>Subtotal:</strong> ${subTotal} ${cartItem.currency}</p>
-        `;
-    }
+    shoppingCartDiv.innerHTML = `
+        <div id="cart-image-container">
+            <img src="${cartItem.image}" alt="${cartItem.alt}" class="rounded-2" width="100", height="100">
+        </div>
+        <div class="cart-item-details text-start">
+            <p><strong>${cartItem.name}</strong></p>
+            <p><i>${cartItem.price} ${cartItem.currency}</i></p>
+        </div>
+        <input type="number" class="quantity-display mx-auto" min="0" max="100" aria-label="Display" value="${cartItem.quantity}">
+        <p class="mx-auto"><strong>Subtotal:</strong> ${subTotal} ${cartItem.currency}</p>
+    `;
         
     const quantityDisplay = shoppingCartDiv.querySelector('.quantity-display');
-    
     quantityDisplay.addEventListener('input', function() {
         var newQuantity = parseInt(quantityDisplay.value);
 
         if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity <= 100){
             cartItem.quantity = newQuantity;
-        }
-        
-        // Javascript har ej array.Remove() --> för ta bort ett specifikt objekt används array.slice(start, end)
-        if (newQuantity == 0){
-            // findIndex() returnerar index för första elementet som matchar ett villkor. Returnerar -1 om inget matchar
-            const index = cartItemsArray.findIndex(i => i.id == cartItem.id);
-            if (index != -1) {
-                cartItemsArray.splice(index, 1);
+
+            if (newQuantity === 0){
+                const index = cartItemsArray.findIndex(i => i.id == cartItem.id);
+                
+                if (index !== -1) {
+                    cartItemsArray.splice(index, 1);
+                }
             }
         }
+
         UpdateShoppingCart();
     })
 
     return shoppingCartDiv;
 }
+
 
